@@ -7,7 +7,7 @@ export class PrismaService extends PrismaClient {
     super({
       datasources: {
         db: {
-          url: 'mysql://root:root@localhost:3306/discord-clone-db',
+          url: process.env.DATABASE_URL,
         },
       },
     });
