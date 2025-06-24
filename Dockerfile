@@ -1,21 +1,21 @@
-FROM node:18-alpineMore actions
+# Base image
+FROM node:18-alpine
 
+# Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-
 # Install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copy all source code
+# Copy source code
 COPY . .
 
-# 👇 Generate Prisma client
+# Prisma generate (tạo client trước khi build)
 RUN npx prisma generate
 
-# 👇 Build NestJS app
+# Build NestJS
 RUN npm run build
 
-# 👇 Run migrations at runtime + start
+# Runtime: deploy migration rồi start app
 CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
