@@ -1,26 +1,26 @@
-version: '3.8'
+# version: '3.8'
 
-services:
-  backend:
-    build:
-      dockerfile: Dockerfile  # tên file Dockerfile trong thư mục đó
-    ports:
-      - '3000:3000'
-    depends_on:
-      - discord-clone-db
-    environment:
-      DATABASE_URL: mysql://root:root@discord-clone-db:3306/discord-clone-db
+# services:
+#   backend:
+#     build:
+#       dockerfile: Dockerfile  # tên file Dockerfile trong thư mục đó
+#     ports:
+#       - '3000:3000'
+#     depends_on:
+#       - discord-clone-db
+#     environment:
+#       DATABASE_URL: mysql://root:root@discord-clone-db:3306/discord-clone-db
 
-  discord-clone-db:
-    image: mysql:8
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: discord-clone-db
-    ports:
-      - '3306:3306'
-    volumes:
-      - mysql-data:/var/lib/mysql
+#   discord-clone-db:
+#     image: mysql:8
+#     restart: always
+#     environment:
+#       MYSQL_ROOT_PASSWORD: root
+#       MYSQL_DATABASE: discord-clone-db
+#     ports:
+#       - '3306:3306'
+#     volumes:
+#       - mysql-data:/var/lib/mysql
 
-volumes:
-  mysql-data:
+# volumes:
+#   mysql-data:
