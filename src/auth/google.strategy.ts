@@ -20,16 +20,11 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
     private cloudinaryService: CloudinaryService,
     configService: ConfigService,
   ) {
-     console.log(
-      'Config: ',
-      configService.get<string>('GOOGLE_CLIENT_ID'),
-    );
-     console.log(
-      'Env: ',
-      process.env.GOOGLE_CLIENT_ID,
-    );
     super({
-      clientID: process.env.GOOGLE_CLIENT_ID || configService.get<string>('GOOGLE_CLIENT_ID') || '',
+      clientID:
+        process.env.GOOGLE_CLIENT_ID ||
+        configService.get<string>('GOOGLE_CLIENT_ID') ||
+        '',
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || '',
       callbackURL: process.env.GOOGLE_CALLBACK_URL,
       scope: ['email', 'profile'],

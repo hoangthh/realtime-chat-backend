@@ -1,10 +1,14 @@
-import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { IoAdapter } from '@nestjs/platform-socket.io';
 import * as cookieParser from 'cookie-parser';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const adapter = new IoAdapter(app);
+  app.useWebSocketAdapter(adapter);
 
   app.enableCors({
     origin: process.env.FRONTEND_URL,

@@ -1,5 +1,3 @@
-// src/socket/socket.gateway.ts
-
 import { NotFoundException, UnauthorizedException } from '@nestjs/common';
 import {
   OnGatewayConnection,
