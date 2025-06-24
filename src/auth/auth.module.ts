@@ -19,7 +19,7 @@ import { GoogleStrategy } from './google.strategy';
     CloudinaryModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, GoogleStrategy],
+  providers: [AuthService],
   exports: [AuthService],
 })
 export class AuthModule {}
